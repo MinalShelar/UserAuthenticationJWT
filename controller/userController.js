@@ -5,7 +5,6 @@ async function createUser(req, res) {
   try {
     const user = await User.create(req.body);
     res.status(201).json({ message : 'User Inserted Successfully'});
-    res.status(201).json(user);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -15,7 +14,6 @@ async function createUser(req, res) {
 async function getUsers(req, res) {
   try {
     const users = await User.find();
-    res.status(200).json({ message : 'All Users Data'});
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -29,7 +27,6 @@ async function getUserById(req, res) {
     if (!user) {
       res.status(404).json({ message: 'User not found' });
     } else {
-      res.status(200).json({ message : 'User by ID'});
       res.status(200).json(user);
     }
   } catch (error) {
@@ -49,7 +46,6 @@ async function updateUser(req, res) {
       res.status(404).json({ message: 'User not found' });
     } else {
       res.status(200).json({ message: 'User updated Successfully'});
-      res.status(200).json(user);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -63,7 +59,7 @@ async function deleteUser(req, res) {
     if (!user) {
       res.status(404).json({ message: 'User not found' });
     } else {
-      res.status(204).json({ message: 'User Deleted Successfully'});
+      res.status(200).json({ message: 'User Deleted Successfully'});
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
