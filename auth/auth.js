@@ -7,8 +7,6 @@ async function register(req, res) {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new User({ name: req.body.name, email: req.body.email, password: hashedPassword });
     const savedUser = await user.save();
-    // const token = createToken({ userId: savedUser._id });
-    // res.status(201).json({ token });
     res.status(200).json({message : 'User Registered Successfully !!!'});
   } catch (error) {
     console.error(error);
