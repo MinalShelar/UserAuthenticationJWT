@@ -34,6 +34,10 @@ app.get('/users', authenticate, async (req, res) => {
 app.use('/users', userRoutes);
 
 //port
+app.get('/', (req, res) => {
+  res.send('User Authentication using JWT!')
+})
+
 app.listen(3000, () => {
     console.log("server running on 3000 port")
 })
